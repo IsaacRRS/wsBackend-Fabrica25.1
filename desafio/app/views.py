@@ -6,3 +6,10 @@ from .models import RegistroModel, IPModel
 
 import requests
 
+
+
+def index(request):
+
+    return render(request, 'app/index.html')
+
+
