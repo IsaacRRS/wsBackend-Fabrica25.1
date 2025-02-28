@@ -1,0 +1,82 @@
+{% extends 'app/default.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de IPs</title>
+</head>
+
+<body>
+
+    <br>
+
+    <h5> Conexão : {{user}}</h5>
+
+    <br>
+
+    <a class="btn btn-primary" href="{% url 'adicionar_ip' %}"> Adicionar novo IP</a>
+
+    <br><br>
+
+    <hr>
+    
+    <div class="d-flex justify-content-center">
+
+        <table class="table table-light table-hover" border="1">
+
+            <thead class="table-dark">
+
+                <tr class="text-center table-dark">
+
+                    <th>Usuário</th>
+                    <th>IP</th>
+                    <th>Cidade</th>
+                    <th>País</th>
+                    <th>Ações</th>
+
+                </tr>
+
+            </thead>
+
+            {% for ip in ips %}
+
+                <tr class="text-center">
+
+                    <td>{{ ip.usuario.nome }}</td>
+                    <td>{{ ip.endecIP }}</td>
+                    <td>{{ ip.cidade }}</td>
+                    <td>{{ ip.pais }}</td>
+                    
+                    <td>
+
+                        <a class="btnIP ver btnIPver btn-primary" href="{% url 'visualizar_ip' ip.id %}">Ver</a> 
+                        <a class="btnIP atualizar btn-primary" href="{% url 'atualizar_ip' ip.id %}">Editar</a> 
+                        <a class="btnIP deletar btn-primary" href="{% url 'deletar_ip' ip.id %}" onclick="return confirm('certeza??')">Excluir</a>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr class="text-center">
+
+                    <td colspan="5">Nenhum IP cadastrado</td>
+                    
+                </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>
+
+{% endblock %}

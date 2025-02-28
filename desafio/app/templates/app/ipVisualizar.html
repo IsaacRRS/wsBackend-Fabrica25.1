@@ -1,0 +1,37 @@
+{% extends 'app/default.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <h2>Detalhes do IP: {{ ip_info.endecIP }}</h2>
+
+    <hr>
+
+    <br>
+
+    <ul>
+
+        <li><strong>Cidade:</strong> {{ ip_info.cidade }}</li>
+        <li><strong>Região:</strong> {{ ip_info.regiao }}</li>
+        <li><strong>País:</strong> {{ ip_info.pais }}</li>
+        <li><strong>Latitude:</strong> {{ ip_info.latitude }}</li>
+        <li><strong>Longitude:</strong> {{ ip_info.longitude }}</li>
+        <li><strong>Organização:</strong> {{ ip_info.org }}</li>
+        <li><strong>Data de inserção:</strong> {{ ip_info.dataCriacao }}</li>
+
+    </ul>
+
+    <a class="btn btn-primary" href="{% url 'listar_ips' %}">Voltar</a>
+
+</body>
+</html>
+
+{% endblock %}
