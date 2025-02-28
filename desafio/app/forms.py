@@ -82,3 +82,23 @@ class AtualizarRegistro(forms.ModelForm):
         fields = ['nome', 'sobrenome', 'email', 'celular', 'cidade', 'país']
 
 
+
+# ------- IP ------- #
+
+
+
+class FormularioIP(forms.ModelForm):
+
+    usuario = forms.ModelChoiceField(queryset=RegistroModel.objects.all(), label="Usuário")
+
+    class Meta:
+        
+        model = IPModel
+        fields = ['usuario', 'endecIP']
+
+    endecIP = forms.CharField(
+
+    label = "Endereço",
+
+    )   
+
