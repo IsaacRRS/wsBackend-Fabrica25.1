@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="{% url '' %}">
+        
+        &nbsp; Home
+
+      </a>
+      
+      <div class="collapse navbar-collapse" id="navbarColor01">
+
+        <ul class="navbar-nav me-auto">
+
+            &nbsp; &nbsp;
+         
+          {% if user.is_authenticated %}
+
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'listar_pessoas' %}">Dashboard Registros &nbsp; </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}"> Sair</a>
+              </li>
+
+            {% else %}
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'registro' %}"> Registro</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}"> Login</a>
+              </li>
+              
+          {% endif %}
+
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
