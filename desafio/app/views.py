@@ -51,7 +51,7 @@ def adicionar_ip(request):
 
     if request.method == "POST":
 
-        form = (request.POST)
+        form = FormularioIP(request.POST)
 
         if form.is_valid():
 
