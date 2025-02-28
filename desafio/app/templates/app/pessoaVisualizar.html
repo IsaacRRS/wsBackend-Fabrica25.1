@@ -1,0 +1,61 @@
+{% extends 'app/default.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+    <body>
+
+        <div class="d-flex justify-content-center">
+            
+            <div class="card">
+
+                <br>
+
+                <h5 class="p-2"> Usuário:
+
+                    {{registro.nome}}
+                    {{registro.sobrenome}}          
+
+                </h5>
+                
+                <div class="card-body">
+
+                    <p> <strong> ID: </strong> {{registro.id}} </p>
+                    <p> <strong> Email: </strong> {{registro.email}} </p>
+                    <p> <strong> Celular: </strong> {{registro.celular}} </p>
+                    <p> <strong> País: </strong> {{registro.país}} </p>
+                    <p> <strong> Cidade: </strong> {{registro.cidade}} </p>
+                    <p> <strong> Criação: </strong> {{registro.data}} </p>
+                
+                </div>
+                
+
+            </div>
+
+            <br><br>
+
+        </div>
+
+        <br>
+
+       <div class="text-center">
+
+            <a class="atualizar btn btn-primary" href="{% url 'atualizar_registro' registro.id %}">Atualizar</a>
+
+            <a class="btn btn-primary" href="{% url 'listar_pessoas' %}">Voltar</a>
+
+            <a class="deletar btn btn-primary" href="{% url 'deletar_registro' registro.id %}" onclick="return confirm('quer mesmo remover este registro?')">Deletar</a>
+
+       </div> 
+        
+    </body>
+
+{% endblock %}

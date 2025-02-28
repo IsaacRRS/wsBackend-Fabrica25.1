@@ -1,0 +1,49 @@
+{% extends 'app/default.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/userStyles.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/ff41a7d76a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="form container bg-light shadow-lg p-5">
+
+        <h3 class="text-center"> Crie um registro</h3>
+
+        <hr>
+
+        <form method="POST" autocomplete="off">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <br>
+
+            <div class="text-center">
+
+                <button class="botaoRegistro btn btn-primary" type="submit">Criar registro</button>
+
+                <a class="btn btn-primary" href="{% url 'listar_pessoas' %}">Voltar</a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+
+{% endblock %}

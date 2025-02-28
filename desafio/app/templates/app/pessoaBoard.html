@@ -1,0 +1,69 @@
+{% extends 'app/default.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <br>
+
+    <h5> Conexão : {{user}}</h5>
+
+    <br>
+
+    <a class="btn btn-primary" href="{% url 'criar_registro' %}">Criar um novo registro</a>
+
+    <br><br>
+
+    <hr>
+
+    <div class="d-flex justify-content-center">
+        
+        <table class="table table-light table-hover">
+
+            <thead class="table-dark">
+
+                <tr class="text-center">
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">País</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">Criação</th>
+
+                    <th scope="col">Ações</th>
+                </tr>
+
+            </thead>
+
+            <tbody class="thead-light text-center">
+
+            {% if registros %}
+                {% for registro in registros %}
+
+                <tr>
+
+                    <td> {{registro.id}} </td>
+                    <td> {{registro.nome}} {{registro.sobrenome}} </td>
+                    <td> {{registro.email}} </td>
+                    <td> {{registro.celular}} </td>
+                    <td> {{registro.país}} </td>
+                    <td> {{registro.cidade}} </td>
+                    <td> {{registro.data}} </td>
+
+                    <td> 
+                        <a class="btn btn-primary" href="{% url 'visualizar_registro' registro.id %}"> Visualizar 
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+            {% endif %}
+
+            </tbody>
+        </table>
+        
+    </div>
+
+
+{% endblock %}
