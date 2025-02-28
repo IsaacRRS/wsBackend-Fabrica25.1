@@ -60,3 +60,25 @@ class Login(AuthenticationForm):
     username = forms.CharField()
     password = forms.CharField(widget=PasswordInput())
 
+
+
+# ------- Registro ------- #
+
+
+
+class CriarRegistro(forms.ModelForm):
+
+    class Meta:
+
+        model = RegistroModel
+        fields = ['nome', 'sobrenome', 'email', 'celular', 'cidade', 'país']        
+
+
+class AtualizarRegistro(forms.ModelForm):
+
+    class Meta:
+
+        model = RegistroModel
+        fields = ['nome', 'sobrenome', 'email', 'celular', 'cidade', 'país']
+
+

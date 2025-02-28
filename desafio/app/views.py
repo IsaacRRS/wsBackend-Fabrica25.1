@@ -1,4 +1,8 @@
 from django.shortcuts import render, redirect
+
+from django.contrib.auth.decorators import login_required
+
+from .forms import CriarGerente, Login, CriarRegistro, AtualizarRegistro
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
 
@@ -64,3 +68,76 @@ def logout(request):
 
     return redirect("login")
 
+
+
+# -----------------Registro Pessoas----------------- #
+
+
+
+@login_required(login_url='login')
+def listar_pessoas(request):
+
+    registros = RegistroModel.objects.all()
+
+    context = {'registros': registros}
+
+    return render(request, 'app/pessoaBoard.html', context=context)
+
+
+@login_required(login_url='login')
+def criar_registro(request):
+
+    form = CriarRegistro()
+
+    if request.method == "POST":
+
+        form = CriarRegistro(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect("listar_pessoas")
+        
+    context = {'form': form}
+
+    return render(request, 'app/pessoaCriar.html', context=context)
+
+@login_required(login_url='login')
+def atualizar_registro(request, pk):
+
+    registro = RegistroModel.objects.get(id=pk)
+
+    form = AtualizarRegistro(instance=registro)
+
+    if request.method == 'POST':
+
+        form = AtualizarRegistro(request.POST, instance=registro)
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect("listar_pessoas")
+        
+    context = {'form': form}
+
+    return render(request, 'app/pessoaAtualizar.html', context=context)
+
+@login_required(login_url='login')
+def visualizar_registro(request, pk):
+
+    selecionar = RegistroModel.objects.get(id=pk)
+
+    context = {'registro':selecionar}
+
+    return render(request, 'app/pessoaVisualizar.html', context=context)
+
+@login_required(login_url='login')
+def deletar_registro(request, pk):
+
+    registro = RegistroModel.objects.get(id=pk)
+
+    registro.delete()
+
+    return redirect("listar_pessoas")
