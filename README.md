@@ -7,15 +7,16 @@ Basicamente, a aplicação consiste em ter um 'Gerente', onde o mesmo possui ace
 ---
 ## 🖥️ Como rodar o projeto 
 
-Assumindo que o Python e PostgreSQL estão instalados no seu computador, vá para o diretório do projeto. Abra o terminal do repositório para criação de um ambiente virtual e ative-o em seguida.
+Assumindo que o Python e PostgreSQL estão instalados no seu computador, vá para o diretório do projeto clonado através do terminal para criação de um ambiente virtual e ative-o em seguida.
 
 ```
+cd .\wsBackend-Fabrica25.1\
 py -m venv (nome da venv)
-/(nome da venv)/Scripts/activate
+(nome da venv)\Scripts\activate
 ```
 Depois que o ambiente virtual tiver sido instalado, vá até '../desafio/' onde 'requirements.txt' está localizado e instale as dependências em sua venv.
 ```
-\..wsBackend-Fabrica25.1\desafio> 
+cd .\desafio\
 pip install -r requirements.txt
 ```
 Agora, vá até '..\desafio\desafio\settings.py' e conecte a aplicação à um banco de dados PostgreSQL de sua escolha (crie um caso não tiver).
@@ -24,7 +25,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': '----',
-        'USER': '----',
+        'USER': '----', 
         'PASSWORD': '----',
         'HOST':'localhost',
         'PORT': '5432'
